@@ -32,8 +32,10 @@ def create_word_list(filename, caps, numerals, specials, num_words, min_word_len
                 word = ''.join(word_tuple)
                 f.write(word + "\n")
                 words_written += 1
+                
+    file_size = os.path.getsize(filename + ".txt")
+    print(f"File '{filename}.txt' created with {num_words} words. File size: {file_size / (1024 * 1024):.2f} MB")
     
-    print(f"File '{filename}.txt' created with {num_words} words.")
 
 if __name__ == "__main__":
     # Get user inputs
@@ -42,6 +44,7 @@ if __name__ == "__main__":
     numerals = input("Should words contain numerals? (yes or no): ")
     specials = input("Should words contain special characters? (yes or no): ")
     num_words = int(input("How many words do you want to generate? "))
+    print("wait untill this code generates and save into that file...")
 
     # Generate file with word combinations
     create_word_list(filename, caps, numerals, specials, num_words)
