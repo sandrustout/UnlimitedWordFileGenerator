@@ -1,5 +1,6 @@
 import itertools
 import string
+import os
 
 def create_word_list(filename, caps, numerals, specials, num_words, min_word_length=8):
     # Define character set based on user preferences
