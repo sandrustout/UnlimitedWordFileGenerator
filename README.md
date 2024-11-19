@@ -6,6 +6,19 @@ _**A Python script that generates a text file containing all possible combinatio
 **Customizable Character Set**: Supports lowercase, uppercase, numerals, and special characters, with options to include or exclude each category.
 **Efficient Memory Usage**: Uses generators to avoid memory issues and writes directly to the file as words are generated, handling large data requests smoothly.
 
+# Unlimited Word File Generator
+A Python-based tool to generate large wordlist files for custom needs. Useful for brute-forcing, testing, or other purposes.
+- Customizable character sets (lowercase, uppercase, numerals).
+- Adjustable word length and number of words.
+- Outputs to a text file.
+
+### Direct Download via `curl`
+Run the following commands in your terminal:
+curl -O https://raw.githubusercontent.com/sandrustout/unlimitedwordfilegenerator/main/main.py
+chmod +x main.py
+./main.py --filename wordlist --caps --numerals --min-length 8 --num-words 1000
+
+
 
 **Usage**
 **Clone the repository and navigate to the directory.**
