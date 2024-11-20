@@ -6,7 +6,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="wordfilegenerator",
-    version="1.0.0",
+    version="3.1.2",
     description="Generate custom wordlists for brute force testing.",
     long_description=long_description,
     long_description_content_type="text/markdown",
