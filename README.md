@@ -1,55 +1,129 @@
-**Flexible Word List Generator**
-_**A Python script that generates a text file containing all possible combinations of words based on user-specified parameters. This tool is especially useful for generating large lists of words for brute-forcing, testing, and data generation needs**_.
 
-**Features**
-**Dynamic Word Length**: Starts with a minimum word length of 8 and increases automatically to meet the required number of unique words.
-**Customizable Character Set**: Supports lowercase, uppercase, numerals, and special characters, with options to include or exclude each category.
-**Efficient Memory Usage**: Uses generators to avoid memory issues and writes directly to the file as words are generated, handling large data requests smoothly.
+---
 
-# Unlimited Word File Generator
-A Python-based tool to generate large wordlist files for custom needs. Useful for brute-forcing, testing, or other purposes.
-- Customizable character sets (lowercase, uppercase, numerals).
-- Adjustable word length and number of words.
-- Outputs to a text file.
+# Word File Generator
 
-### Direct Download via `curl`
-Run the following commands in your terminal:
-curl -O https://raw.githubusercontent.com/sandrustout/unlimitedwordfilegenerator/main/main.py
-chmod +x main.py
-./main.py --filename wordlist --caps --numerals --min-length 8 --num-words 1000
+**Word File Generator** is a Python-based utility for creating customized wordlists. It allows users to generate a text file with all possible word combinations based on user-defined parameters, such as inclusion of uppercase letters, numerals, special characters, word length, and the total number of words.
 
+This tool is perfect for penetration testers, researchers, or anyone needing a highly flexible wordlist generator.
 
+---
 
-**Usage**
-**Clone the repository and navigate to the directory.**
-_git clone <repo-url>
-cd <repo-directory>_
+## Features
+- **Customizable Character Set**: Include lowercase, uppercase, numerals, and/or special characters.
+- **Dynamic Word Length**: Minimum word length is configurable, with automatic scaling based on the number of words required.
+- **High-Performance Generation**: Efficiently generates large wordlists up to billions of combinations.
+- **Command-Line Interface**: Easily usable via command-line arguments.
+- **File Size Reporting**: Provides the final size of the generated wordlist file.
+- **Cross-Platform**: Compatible with Linux, macOS, and Windows.
 
-**Run the script:**
-_python generate_flexible_ordered_words.py_
+---
 
-**Input parameters:**
-**Filename**: Base name of the output file (will be saved as <filename>.txt).
-**Uppercase Letters**: Choose if words should include uppercase letters (yes or no).
-**Numerals**: Choose if words should include numerals (yes or no).
-**Special Characters**: Choose if words should include special characters (yes or no).
-**Number of Words**: Specify the total number of words to generate.
+## Installation
 
+### 1. Install via `pip` (Recommended)
+Make sure Python is installed on your system (Python 3.6+ recommended). Install the package directly from [PyPI](https://pypi.org/):
 
-**Example**
-_Enter the filename (without .txt extension): wordlist
-Should words contain uppercase letters? (yes or no): yes
-Should words contain numerals? (yes or no): no
-Should words contain special characters? (yes or no): no
-How many words do you want to generate? 1000000
-This will create a file named wordlist.txt containing 1,000,000 words, each composed of lowercase and uppercase letters only, and starting with words of length 8._
+```bash
+pip install wordfilegenerator
+```
 
-**_How It Works
-Dynamic Character Pool: The script constructs a character pool based on the selected options (lowercase, uppercase, numerals, special characters)._**
-Lexicographical Order: Words are generated in lexicographical order (e.g., aaaaaaaa, aaaaaaab).
-Adaptive Length: Starting with 8 characters, the script increments the word length as needed to reach the desired number of words.
-Efficient File Writing: To handle very large lists (millions or billions of words), the script writes each word to the file as it’s generated, ensuring minimal memory usage.
-Requirements
-Python 3.6 or higher
-License
-This project is open-source and available under the MIT License.
+### 2. Install from Source
+Clone this repository and install the package manually:
+```bash
+git clone https://github.com/sandrustout/unlimitedwordfilegenerator.git
+cd unlimitedwordfilegenerator
+python setup.py install
+```
+
+---
+
+## Usage
+
+### Command-Line Tool
+After installation, the tool can be run using the `generatewordlist` command:
+
+```bash
+generatewordlist --filename <output_filename> [--caps] [--numerals] [--min-length <length>] --num-words <count>
+```
+
+#### Parameters:
+- `--filename` (Required): Name of the output file (without `.txt` extension).
+- `--caps` (Optional): Include uppercase letters in the wordlist.
+- `--numerals` (Optional): Include numbers in the wordlist.
+- `--min-length` (Optional): Minimum length of words (default: 8).
+- `--num-words` (Required): Total number of words to generate.
+
+#### Example:
+Generate a wordlist named `testfile` containing 10,000 words with lowercase letters, uppercase letters, and numbers:
+```bash
+generatewordlist --filename testfile --caps --numerals --min-length 8 --num-words 10000
+```
+
+---
+
+### Using as a Python Module
+You can also use the tool programmatically in your Python scripts:
+
+```python
+from wordfilegenerator.main import create_word_list
+
+create_word_list(
+    filename="my_wordlist",
+    caps="yes",
+    numerals="yes",
+    specials="no",
+    num_words=1000,
+    min_word_length=8,
+)
+```
+
+---
+
+## Example Output
+
+A wordlist file (`output.txt`) with words like the following will be generated based on user specifications:
+```
+aaaaaaaa
+aaaaaaab
+aaaaaaac
+...
+```
+
+The final message includes the size of the generated file in MB.
+
+---
+
+## FAQs
+
+### 1. **Why is the `generatewordlist` command not recognized?**
+Ensure that the package is installed correctly and is accessible in your environment. Try:
+```bash
+pip install wordfilegenerator --force-reinstall
+```
+
+### 2. **How large can the file be?**
+The tool can generate up to billions of words, but the file size will depend on your storage capacity. A 1 billion-word list with 8-character words (including uppercase and numbers) is approximately **8.8 GB**.
+
+### 3. **What happens if my word count exceeds character possibilities?**
+The tool automatically adjusts the word length to accommodate the required number of words.
+
+---
+
+## Contributing
+
+Contributions are welcome! If you encounter a bug or have a feature request, please open an issue or create a pull request on [GitHub](https://github.com/sandrustout/unlimitedwordfilegenerator).
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE.txt` file for details.
+
+---
+
+## Support
+
+If you face any issues or have questions, feel free to reach out via the [GitHub Issues page](https://github.com/sandrustout/unlimitedwordfilegenerator/issues).
+
+---
